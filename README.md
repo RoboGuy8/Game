@@ -42,13 +42,13 @@ Features:
   - customizable looks, try replacing the texture or img files
 
 Code parts:
-  1: imports of pygame and csv and initialization of pygame 
-  2: setting basic variables such as gravity, fps,... and setting title of the game window
-  3: importing images and transforming them to needed size, settings, format
-  4: defing classes (Player, World and Bullet) and functions
-  5: creation of bullet group, where all existing bullets will be allocated for easier collision handleling, creation of player 1 and 2 with their parameters
-  6: loading data from map.scv and numbering sectors of the map
-  7: main game loop, start button
-  8: setting cotrolls for movement (event handlerer)
-  9: shooting cooldown and spawning position for bullets and hit registring (lives)
-  10: adding some fog to the edges of the screen, updating screen and ending game
+  1) imports of pygame and csv and initialization of pygame 
+  2) setting basic variables such as gravity, fps,... and setting title of the game window
+  3) importing images and transforming them to needed size, settings, format
+  4) defing classes (Player, World and Bullet) and functions
+  5) creation of bullet group, where all existing bullets will be allocated for easier collision handleling, creation of player 1 and 2 with their parameters
+  6) loading data from map.scv and numbering sectors of the map
+  7) main game loop, start button
+  8) setting cotrolls for movement (event handlerer)
+  9) shooting cooldown and spawning position for bullets and hit registring (lives)
+  10) adding some fog to the edges of the screen, updating screen and ending game
