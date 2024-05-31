@@ -1,9 +1,10 @@
+#Imports (1)
 import pygame
 import csv
 
 pygame.init()
 
-#Settings
+#Settings (2)
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720
 
@@ -21,7 +22,7 @@ FPS = 60
 GRAVITY = 0.55
 TILE_SIZE = SCREEN_HEIGHT // ROWS
 
-#Image load and transform
+#Image load and transform (3)
 bullet_image = pygame.image.load('bullet.png').convert_alpha()
 bullet_img = pygame.transform.scale(bullet_image, (int(bullet_image.get_width() * 0.05), int(bullet_image.get_height() * 0.05)))
 texture_img = pygame.image.load('bricks.jpg')
@@ -35,7 +36,7 @@ fog_left = pygame.transform.rotate(fog_img, 90)
 fog_right = pygame.transform.rotate(fog_img, -90)
 font = pygame.font.SysFont('Futura', 30)
 
-#Funtions + classes
+#Funtions + classes (4)
 def draw_text(text, font, text_color, x, y):
     img = font.render(text, True, text_color)
     screen.blit(img, (x, y))
@@ -167,13 +168,13 @@ class Bullet(pygame.sprite.Sprite):
                 player_2.health -= 1
                 self.kill()
  
-#Groups + player init
+#Groups + player creation (5)
 bullet_group = pygame.sprite.Group()
 
 player_1 = Player(1, 70, 350, 0.075, 4)
 player_2 = Player(2, 1000, 350, 0.075, 4)
 
-#proces world data from csv
+#proces world data from csv (6)
 world_data = []
 for row in range(ROWS):
     r = [-1] * COLUMNS
@@ -188,7 +189,7 @@ with open('map.csv', newline='') as csvfile:
 world = World()
 world.process_data(world_data)
 
-#Main loop
+#Main loop (7)
 running = True
 game_started = False
 while running:
@@ -202,7 +203,7 @@ while running:
         pygame.draw.rect(screen, (0, 255, 0), start_button)
         draw_text('START', font, (255, 255, 255), 430, 310)
 
-    #Controlls
+    #Controlls and drawing(8)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -259,7 +260,7 @@ while running:
         player_1.move(player_1.moving_left, player_1.moving_right)
         player_2.move(player_2.moving_left, player_2.moving_right)
 
-        #shooting and bullet collisions
+        #shooting, hits (9)
         if player_1.alive:
             if player_1.shoot:
                 if player_1.shoot_cooldown == 0:
@@ -287,7 +288,7 @@ while running:
         player_1.check_alive()
         player_2.check_alive()
 
-        #cosmetic "fog" border
+        #cosmetic "fog" border (10)
         screen.blit(fog_img, (0, 595))
         screen.blit(fog_up, (0, -75))
         screen.blit(fog_left, (950, 0))
