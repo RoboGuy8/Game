@@ -199,9 +199,9 @@ while running:
     world.draw()
 
     if game_started == False:
-        start_button = pygame.Rect(400, 300, 200, 50)
+        start_button = pygame.Rect(440, 290, 200, 50)
         pygame.draw.rect(screen, (0, 255, 0), start_button)
-        draw_text('START', font, (255, 255, 255), 430, 310)
+        draw_text('START', font, (0, 0, 0), 505, 305)
 
     #Controlls and drawing(8)
     for event in pygame.event.get():
@@ -272,6 +272,9 @@ while running:
                 player_1.shoot_cooldown -= 1
         if player_1.alive == False:
             player_1.image = player_1.death_image
+            end_txt = pygame.Rect(440, 290, 200, 50)
+            pygame.draw.rect(screen, (0, 100, 255), end_txt)
+            draw_text('PLAYER 2 WON', font, (0, 0, 0), 460, 305)
 
         if player_2.alive:
             if player_2.shoot:
@@ -284,6 +287,10 @@ while running:
                 player_2.shoot_cooldown -= 1
         if player_2.alive == False:
             player_2.image = player_2.death_image
+            end_txt = pygame.Rect(440, 290, 200, 50)
+            pygame.draw.rect(screen, (0, 255, 100), end_txt)
+            draw_text('PLAYER 1 WON', font, (0, 0, 0), 460, 305)
+
 
         player_1.check_alive()
         player_2.check_alive()
